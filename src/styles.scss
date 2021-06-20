@@ -1,1 +1,107 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Custom palletes
+// primary
+$primary-palette: (
+	50 : #DFF7F3,
+	100 : #C0EFE7,
+	200 : #96E5D7,
+	300 : #6BDAC7,
+	400 : #4CD2BB,
+	500 : #2CCAAF,
+	600 : #25AC95,
+	700 : #1F8D7A,
+	800 : #166558,
+	900 : #0F473D,
+	A100 : #A3FFF4,
+	A200 : #72FFEE,
+	A400 : #41FFE8,
+	A700 : #10FFE2,
+	contrast: (
+		50 : #000000,
+		100 : #000000,
+		200 : #000000,
+		300 : #000000,
+		400 : #000000,
+		500 : #000000,
+		600 : #000000,
+		700 : #ffffff,
+		800 : #ffffff,
+		900 : #ffffff,
+		A100 : #000000,
+		A200 : #000000,
+		A400 : #000000,
+		A700 : #000000,
+	)
+);
+// accent
+$accent-palette: (
+	50 : #EAE3EC,
+	100 : #D5C8D8,
+	200 : #B9A3BF,
+	300 : #9D7EA5,
+	400 : #886291,
+	500 : #73467E,
+	600 : #623C6B,
+	700 : #513158,
+	800 : #3A233F,
+	900 : #28192C,
+	A100 : #CA74D9,
+	A200 : #BF55D1,
+	A400 : #B337C8,
+	A700 : #972EA9,
+	contrast: (
+		50 : #000000,
+		100 : #000000,
+		200 : #000000,
+		300 : #000000,
+		400 : #ffffff,
+		500 : #ffffff,
+		600 : #ffffff,
+		700 : #ffffff,
+		800 : #ffffff,
+		900 : #ffffff,
+		A100 : #000000,
+		A200 : #000000,
+		A400 : #ffffff,
+		A700 : #ffffff,
+	)
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-ssr-my-posts-primary: mat.define-palette($primary-palette);
+$angular-ssr-my-posts-accent: mat.define-palette($accent-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$angular-ssr-my-posts-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$angular-ssr-my-posts-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-ssr-my-posts-primary,
+    accent: $angular-ssr-my-posts-accent,
+    warn: $angular-ssr-my-posts-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($angular-ssr-my-posts-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
