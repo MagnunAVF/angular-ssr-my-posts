@@ -25,3 +25,24 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## SSR
+
+### Build dev env
+After install:
+```
+npm run build-offline:sls
+```
+
+### Run in localhost with serverless offline
+After build:
+```
+npm run serve:sls
+```
+Access http://localhost:3000/dev .
+
+
+### Deploy
+```
+serverless deploy --stage prod --aws-profile PROFILE
+```

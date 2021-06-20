@@ -1,0 +1,38 @@
+service: angular-ssr-my-posts
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 128
+  timeout: 30
+  region: us-east-1
+
+package:
+  exclude:
+    - ./**
+  include:
+    - "node_modules/aws-serverless-express/**"
+    - "node_modules/@vendia/**"
+    - "node_modules/binary-case/**"
+    - "node_modules/type-is/**"
+    - "node_modules/media-typer/**"
+    - "node_modules/mime-types/**"
+    - "node_modules/mime-db/**"
+    - "dist/**"
+    - "lambda.js"
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'

@@ -10,6 +10,9 @@
     "dev:ssr": "ng run angular-ssr-my-posts:serve-ssr",
     "serve:ssr": "node dist/angular-ssr-my-posts/server/main.js",
     "build:ssr": "ng build && ng run angular-ssr-my-posts:server",
+    "serve:sls": "serverless offline start",
+    "build:sls": "ng build --prod --base-href /prod/ --deploy-url /prod/ && ng run angular-ssr-my-posts:serverless:production",
+    "build-offline:sls": "ng build --prod --base-href /dev/ --deploy-url /dev/ && ng run angular-ssr-my-posts:serverless:production",
     "prerender": "ng run angular-ssr-my-posts:prerender"
   },
   "private": true,
@@ -26,6 +29,8 @@
     "@angular/platform-server": "~12.0.5",
     "@angular/router": "~12.0.5",
     "@nguniversal/express-engine": "^12.0.2",
+    "@vendia/serverless-express": "^3.4.0",
+    "aws-serverless-express": "^3.4.0",
     "express": "^4.15.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
@@ -45,6 +50,9 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "serverless": "^2.47.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-offline": "^7.0.0",
     "typescript": "~4.2.3"
   }
 }
